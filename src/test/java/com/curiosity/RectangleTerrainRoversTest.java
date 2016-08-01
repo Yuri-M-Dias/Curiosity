@@ -3,7 +3,7 @@ package com.curiosity;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SingleRoverTest {
+public class RectangleTerrainRoversTest {
 
     @Test
     public void singleRover() throws Exception {
@@ -49,6 +49,8 @@ public class SingleRoverTest {
                 .getFacing(), Direction.NORTH);
         Rover curiosity = new Rover("Curiosity");
         terrain.placeRover(curiosity, 3, 3, Direction.EAST);
+        Assert.assertTrue("Rovers not being registered to the terrain.",
+                terrain.getRovers().size() == 2);
         terrain.move(curiosity, "M");
         terrain.move(curiosity, "M");
         terrain.move(curiosity, "R");

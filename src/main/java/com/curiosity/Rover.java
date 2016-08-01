@@ -9,7 +9,7 @@ public class Rover {
 
     public Rover(String name) {
         this.name = name;
-        this.facing = Direction.NORTH;
+        this.facing = null;
         this.x = -1;
         this.y = -1;
     }
@@ -45,4 +45,13 @@ public class Rover {
     public void setY(int y) {
         this.y = y;
     }
+
+    public void rotateLeft() {
+
+    }
+
+    public void rotateRight() {
+
+    }
+
 }
