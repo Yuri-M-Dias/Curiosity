@@ -31,4 +31,5 @@ public class RectangleInput {
                     .getY(), rover.getFacing().toChar()));
         }
     }
+
 }
