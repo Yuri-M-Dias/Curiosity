@@ -4,8 +4,8 @@ public class Rover {
 
     private String name;
     private Direction facing;
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
     public Rover(String name) {
         this.name = name;
@@ -30,20 +30,38 @@ public class Rover {
         this.facing = facing;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
+    }
+
+    public void rotateLeft() {
+        int currentIndex = facing.getIndex() - 1;
+        if(currentIndex < Direction.NORTH.getIndex()){
+            facing = Direction.WEST;
+        } else {
+            facing = Direction.fromInt(currentIndex);
+        }
+    }
+
+    public void rotateRight() {
+        int currentIndex = facing.getIndex() + 1;
+        if(currentIndex > Direction.WEST.getIndex()){
+            facing = Direction.NORTH;
+        } else {
+            facing = Direction.fromInt(currentIndex);
+        }
     }
 
 }

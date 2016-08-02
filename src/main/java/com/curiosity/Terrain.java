@@ -10,9 +10,9 @@ public abstract class Terrain {
         this.rovers = rovers;
     }
 
-    public abstract void move(Rover rover, String command);
+    public abstract void executeCommand(Rover rover, String command);
 
-    public abstract void placeRover(Rover rover, int x, int y, Direction
+    public abstract void placeRover(Rover rover, double x, double y, Direction
             direction);
 
     public List<Rover> getRovers() {

@@ -1,16 +1,30 @@
 package com.curiosity;
 
 public enum Direction {
-    NORTH(90), SOUTH(270), WEST(180), EAST(0);
+    NORTH(1), EAST(2), SOUTH(3), WEST(4);
 
-    private int degree;
+    private int index;
 
-    Direction(int degree) {
-        this.degree = degree;
+    Direction(int index) {
+        this.index = index;
     }
 
-    public int getDegree() {
-        return degree;
+    public static Direction fromInt(int number){
+        switch (number){
+            case 1:
+                return NORTH;
+            case 2:
+                return EAST;
+            case 3:
+                return SOUTH;
+            case 4:
+                return WEST;
+        }
+        return null;// Not implemented
+    }
+
+    public int getIndex() {
+        return index;
     }
 
 }
