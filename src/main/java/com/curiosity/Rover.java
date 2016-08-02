@@ -7,6 +7,13 @@ public class Rover {
     private double x;
     private double y;
 
+    public Rover() {
+        this.name = "none";
+        this.facing = null;
+        this.x = -1;
+        this.y = -1;
+    }
+
     public Rover(String name) {
         this.name = name;
         this.facing = null;

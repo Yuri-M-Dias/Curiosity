@@ -6,27 +6,6 @@ import org.junit.Test;
 public class CircularTerrainRoversTest {
 
     @Test
-    public void singleRover() throws Exception {
-        Rover endeavour = new Rover("Endeavour");
-        Terrain terrain= new CircularTerrain(5);
-        terrain.placeRover(endeavour, 3, 0, Direction.NORTH);
-        terrain.executeCommand(endeavour, "M");
-        terrain.executeCommand(endeavour, "M");
-        terrain.executeCommand(endeavour, "L");
-        terrain.executeCommand(endeavour, "M");
-        terrain.executeCommand(endeavour, "L");
-        terrain.executeCommand(endeavour, "M");
-        terrain.executeCommand(endeavour, "R");
-        terrain.executeCommand(endeavour, "M");
-        Assert.assertEquals("Rover not ending on the right X position.", 4,
-                endeavour.getX(), 0);
-        Assert.assertEquals("Rover not ending on the right Y position.", 0.4,
-                endeavour.getY(), 0);
-        Assert.assertEquals("Rover not facing the right direction.",
-                Direction.WEST, endeavour.getFacing());
-    }
-
-    @Test
     public void twoRovers() throws Exception {
         Rover endeavour = new Rover("Endeavour");
         Terrain terrain= new CircularTerrain(5);

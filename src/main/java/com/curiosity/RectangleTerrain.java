@@ -65,8 +65,9 @@ public class RectangleTerrain extends Terrain {
                     rover.setX(currentX);
                     break;
             }
+        } else {
+            throw new IllegalArgumentException("Illegal command: " + command);
         }
-
     }
 
     @Override

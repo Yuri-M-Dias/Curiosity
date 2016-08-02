@@ -6,28 +6,6 @@ import org.junit.Test;
 public class RectangleTerrainRoversTest {
 
     @Test
-    public void singleRover() throws Exception {
-        Rover endeavour = new Rover("Endeavour");
-        Terrain terrain= new RectangleTerrain(5, 5);
-        terrain.placeRover(endeavour, 1, 2, Direction.NORTH);
-        terrain.executeCommand(endeavour, "L");
-        terrain.executeCommand(endeavour, "M");
-        terrain.executeCommand(endeavour, "L");
-        terrain.executeCommand(endeavour, "M");
-        terrain.executeCommand(endeavour, "L");
-        terrain.executeCommand(endeavour, "M");
-        terrain.executeCommand(endeavour, "L");
-        terrain.executeCommand(endeavour, "M");
-        terrain.executeCommand(endeavour, "M");
-        Assert.assertEquals("Rover not ending on the right X position.", 1,
-                endeavour.getX(), 0);
-        Assert.assertEquals("Rover not ending on the right Y position.", 3,
-                endeavour.getY(), 0);
-        Assert.assertEquals("Rover not facing the right direction.",
-                Direction.NORTH, endeavour.getFacing());
-    }
-
-    @Test
     public void twoRovers() throws Exception {
         Rover endeavour = new Rover("Endeavour");
         Terrain terrain= new RectangleTerrain(5, 5);

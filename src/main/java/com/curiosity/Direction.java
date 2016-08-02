@@ -23,6 +23,34 @@ public enum Direction {
         return null;// Not implemented
     }
 
+    public static Direction fromChar(char letter){
+        switch (letter){
+            case 'N':
+                return NORTH;
+            case 'E':
+                return EAST;
+            case 'S':
+                return SOUTH;
+            case 'W':
+                return WEST;
+        }
+        return null;// Not implemented
+    }
+
+    public char toChar(){
+        switch (this){
+            case NORTH:
+                return 'N';
+            case EAST:
+                return 'E';
+            case SOUTH:
+                return 'S';
+            case WEST:
+                return 'W';
+        }
+        return 'X';// Not implemented
+    }
+
     public int getIndex() {
         return index;
     }

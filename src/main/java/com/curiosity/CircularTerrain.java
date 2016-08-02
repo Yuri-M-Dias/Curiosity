@@ -27,7 +27,7 @@ public class CircularTerrain extends Terrain {
         } else if ("M".equals(command)) {
             double distanceFromCenter = rover.getX();
             double angle = rover.getY();
-            double arc = Math.PI;
+            double arc = 1;
             switch (roverDirection) {
                 case NORTH:
                     distanceFromCenter++;
@@ -47,25 +47,26 @@ public class CircularTerrain extends Terrain {
                     break;
                 case WEST:
                     //Positive arc!
-                    arc = Math.PI;
-                    angle = arc / radius;
+                    angle += arc / radius;
                     if (angle > (2 * Math.PI)) {
                         System.out.println("Rover reached edge.");
                         break;
                     }
-                    rover.setX(angle);
+                    rover.setY(angle);
                     break;
                 case EAST:
                     //Negative arc!
-                    arc = Math.PI * -1;
-                    angle = arc / radius;
+                    arc *= -1;
+                    angle += arc / radius;
                     if (angle < 0) {
                         System.out.println("Rover reached edge.");
                         break;
                     }
-                    rover.setX(angle);
+                    rover.setY(angle);
                     break;
             }
+        } else {
+            throw new IllegalArgumentException("Illegal command: " + command);
         }
 
     }
