@@ -23,12 +23,12 @@ public class RectangleTerrain extends Terrain {
         if (!rovers.contains(rover)) {
             throw new IllegalArgumentException("Rover not placed on the map.");
         }
+        Direction roverDirection = rover.getFacing();
         if ("L".equals(command)) {
-            rover.rotateLeft();
+            rover.setFacing(rotateDirection(roverDirection, -90));
         } else if ("R".equals(command)) {
-            rover.rotateRight();
+            rover.setFacing(rotateDirection(roverDirection, 90));
         } else if ("M".equals(command)) {
-            Direction roverDirection = rover.getFacing();
             int currentX = rover.getX();
             int currentY = rover.getY();
             switch (roverDirection) {
@@ -50,7 +50,7 @@ public class RectangleTerrain extends Terrain {
                     break;
                 case WEST:
                     currentX--;
-                    if(currentX < 0){
+                    if (currentX < 0) {
                         System.out.println("Rover reached edge.");
                         break;
                     }
@@ -58,7 +58,7 @@ public class RectangleTerrain extends Terrain {
                     break;
                 case EAST:
                     currentX++;
-                    if(currentX > maxX){
+                    if (currentX > maxX) {
                         System.out.println("Rover reached edge.");
                         break;
                     }
@@ -71,6 +71,27 @@ public class RectangleTerrain extends Terrain {
 
     @Override
     public void placeRover(Rover rover, int x, int y, Direction direction) {
+        if(x < 0 || x > maxX || y > maxY || y < 0){
+            throw new IllegalArgumentException("Invalid x and y");
+        }
+        rover.setX(x);
+        rover.setY(y);
+        rover.setFacing(direction);
+        getRovers().add(rover);
+    }
 
+    private Direction rotateDirection(Direction currentDirection, int degrees) {
+        int currentDegree = currentDirection.getDegree() + degrees;
+        Direction direction = null;
+        if (currentDegree == 0 || currentDegree == 360) {
+            direction = Direction.EAST;
+        } else if (currentDegree == 90) {
+            direction = Direction.NORTH;
+        } else if (currentDegree == 180) {
+            direction = Direction.WEST;
+        } else if (currentDegree == 270 || currentDegree == -90) {
+            direction = Direction.SOUTH;
+        }
+        return direction;
     }
 }

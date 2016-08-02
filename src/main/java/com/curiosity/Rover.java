@@ -46,12 +46,4 @@ public class Rover {
         this.y = y;
     }
 
-    public void rotateLeft() {
-
-    }
-
-    public void rotateRight() {
-
-    }
-
 }

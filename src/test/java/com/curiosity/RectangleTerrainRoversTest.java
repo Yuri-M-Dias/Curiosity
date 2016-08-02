@@ -19,12 +19,12 @@ public class RectangleTerrainRoversTest {
         terrain.move(endeavour, "L");
         terrain.move(endeavour, "M");
         terrain.move(endeavour, "M");
-        Assert.assertEquals("Rover not ending on the right X position.", endeavour
-                .getX(), 1);
-        Assert.assertEquals("Rover not ending on the right Y position.", endeavour
-                .getY(), 3);
-        Assert.assertEquals("Rover not facing the right direction.", endeavour
-                .getFacing(), Direction.NORTH);
+        Assert.assertEquals("Rover not ending on the right X position.", 1,
+                endeavour.getX());
+        Assert.assertEquals("Rover not ending on the right Y position.", 3,
+                endeavour.getY());
+        Assert.assertEquals("Rover not facing the right direction.",
+                Direction.NORTH, endeavour.getFacing());
     }
 
     @Test
@@ -41,12 +41,12 @@ public class RectangleTerrainRoversTest {
         terrain.move(endeavour, "L");
         terrain.move(endeavour, "M");
         terrain.move(endeavour, "M");
-        Assert.assertEquals("Rover not ending on the right X position.", endeavour
-                .getX(), 1);
-        Assert.assertEquals("Rover not ending on the right Y position.", endeavour
-                .getY(), 3);
-        Assert.assertEquals("Rover not facing the right direction.", endeavour
-                .getFacing(), Direction.NORTH);
+        Assert.assertEquals("Rover not ending on the right X position.", 1,
+                endeavour.getX());
+        Assert.assertEquals("Rover not ending on the right Y position.", 3,
+                endeavour.getY());
+        Assert.assertEquals("Rover not facing the right direction.",
+                Direction.NORTH, endeavour.getFacing());
         Rover curiosity = new Rover("Curiosity");
         terrain.placeRover(curiosity, 3, 3, Direction.EAST);
         Assert.assertTrue("Rovers not being registered to the terrain.",
@@ -61,12 +61,12 @@ public class RectangleTerrainRoversTest {
         terrain.move(curiosity, "R");
         terrain.move(curiosity, "R");
         terrain.move(curiosity, "M");
-        Assert.assertEquals("Rover not ending on the right X position.", curiosity
-                .getX(), 5);
-        Assert.assertEquals("Rover not ending on the right Y position.", curiosity
-                .getY(), 1);
-        Assert.assertEquals("Rover not facing the right direction.", curiosity
-                .getFacing(), Direction.EAST);
+        Assert.assertEquals("Rover not ending on the right X position.", 5,
+                curiosity.getX());
+        Assert.assertEquals("Rover not ending on the right Y position.", 1,
+                curiosity.getY());
+        Assert.assertEquals("Rover not facing the right direction.",
+                Direction.EAST, curiosity.getFacing());
     }
 
 }
