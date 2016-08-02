@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class CircularTerrain extends Terrain {
 
     private double radius;
+    private static final double TWO_PI = 2 * Math.PI;
 
     public CircularTerrain(double radius) {
         super(new ArrayList<>());
@@ -46,21 +47,18 @@ public class CircularTerrain extends Terrain {
                     rover.setX(distanceFromCenter);
                     break;
                 case WEST:
-                    //Positive arc!
                     angle += arc / radius;
-                    if (angle > (2 * Math.PI)) {
-                        System.out.println("Rover reached edge.");
-                        break;
+                    if (angle > TWO_PI) {
+                        double excess = angle - TWO_PI;
+                        angle = 0 + excess;
                     }
                     rover.setY(angle);
                     break;
                 case EAST:
-                    //Negative arc!
-                    arc *= -1;
-                    angle += arc / radius;
+                    angle -= arc / radius;
                     if (angle < 0) {
-                        System.out.println("Rover reached edge.");
-                        break;
+                        double excess = angle * -1;
+                        angle = TWO_PI - excess;
                     }
                     rover.setY(angle);
                     break;
@@ -68,12 +66,11 @@ public class CircularTerrain extends Terrain {
         } else {
             throw new IllegalArgumentException("Illegal command: " + command);
         }
-
     }
 
     @Override
     public void placeRover(Rover rover, double x, double y, Direction direction) {
-        if (x < 0 || x > radius || y < 0 || y > (2 * Math.PI)) {
+        if (x < 0 || x > radius || y < 0 || y > TWO_PI) {
             throw new IllegalArgumentException("Invalid x and y");
         }
         rover.setX(x);
