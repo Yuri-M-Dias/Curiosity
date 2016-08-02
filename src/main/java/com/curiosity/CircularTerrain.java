@@ -2,8 +2,6 @@ package com.curiosity;
 
 import java.util.ArrayList;
 
-import static javafx.scene.input.KeyCode.Y;
-
 public class CircularTerrain extends Terrain {
 
     private double radius;
@@ -29,6 +27,7 @@ public class CircularTerrain extends Terrain {
         } else if ("M".equals(command)) {
             double distanceFromCenter = rover.getX();
             double angle = rover.getY();
+            double arc = Math.PI;
             switch (roverDirection) {
                 case NORTH:
                     distanceFromCenter++;
@@ -47,20 +46,24 @@ public class CircularTerrain extends Terrain {
                     rover.setX(distanceFromCenter);
                     break;
                 case WEST:
-                    currentX--;
-                    if (currentX < 0) {
+                    //Positive arc!
+                    arc = Math.PI;
+                    angle = arc / radius;
+                    if (angle > (2 * Math.PI)) {
                         System.out.println("Rover reached edge.");
                         break;
                     }
-                    rover.setX(currentX);
+                    rover.setX(angle);
                     break;
                 case EAST:
-                    currentX++;
-                    if (currentX > maxX) {
+                    //Negative arc!
+                    arc = Math.PI * -1;
+                    angle = arc / radius;
+                    if (angle < 0) {
                         System.out.println("Rover reached edge.");
                         break;
                     }
-                    rover.setX(currentX);
+                    rover.setX(angle);
                     break;
             }
         }
